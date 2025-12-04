@@ -146,10 +146,11 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
   const stepsLeft = totalSteps - completedCount;
 
   return (
-    <div className="flex flex-col h-full max-w-lg mx-auto w-full bg-gray-900 overflow-hidden relative">
-      
-      {/* Header */}
-      <div className="flex justify-between items-center p-4 bg-gray-900 border-b border-gray-800 z-10 h-16 shrink-0">
+    <div className="fixed inset-0 bg-gray-900 overflow-hidden">
+      <div className="flex flex-col h-full max-w-lg mx-auto w-full relative">
+
+        {/* Header */}
+        <div className="flex justify-between items-center px-3 py-2 sm:p-4 bg-gray-900 border-b border-gray-800 z-10 shrink-0">
         <div className="flex items-center gap-2">
           <div className="bg-devil-600 text-white font-bold px-2 py-0.5 rounded text-sm">
             第 {config.n} 关
@@ -162,11 +163,11 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
       </div>
 
       {/* Game Area */}
-      <div className="flex-1 relative flex flex-col items-center p-4 gap-2 min-h-0">
-        
+      <div className="flex-1 relative flex flex-col items-center px-3 py-2 sm:p-4 gap-2 min-h-0">
+
         {/* --- TOP SCREEN: NEW PROBLEM --- */}
-        <div className="w-full flex-1 flex flex-col justify-end pb-4">
-          <div className="text-center mb-2 h-6">
+        <div className="w-full flex-1 flex flex-col justify-end pb-2 sm:pb-4">
+          <div className="text-center mb-1 sm:mb-2 h-5 sm:h-6">
              {phase === 'memorize' && (
                <span className="text-xs uppercase tracking-widest text-devil-400 font-bold bg-devil-900/30 px-2 py-1 rounded animate-pulse">
                  记忆阶段
@@ -176,12 +177,12 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
           
           <div className={`
              bg-gray-800 border-2 border-gray-700 rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden transition-all duration-300
-             ${phase === 'cooldown' ? 'opacity-20 scale-95 h-20' : 'h-32 opacity-100'}
+             ${phase === 'cooldown' ? 'opacity-20 scale-95 h-16 sm:h-20' : 'h-24 sm:h-32 opacity-100'}
           `}>
              <div className="absolute inset-0 opacity-5 bg-[linear-gradient(45deg,transparent_25%,#fff_25%,#fff_50%,transparent_50%,transparent_75%,#fff_75%,#fff_100%)] bg-[length:20px_20px]"></div>
              
              {newProblem && (
-                 <div key={newProblem.id} className={`text-5xl font-mono font-bold text-white relative z-10 ${slideAnim ? 'animate-slide-in' : ''}`}>
+                 <div key={newProblem.id} className={`text-3xl sm:text-5xl font-mono font-bold text-white relative z-10 ${slideAnim ? 'animate-slide-in' : ''}`}>
                    {newProblem.expression}
                  </div>
              )}
@@ -192,7 +193,7 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
         </div>
 
         {/* --- MIDDLE: CONVEYOR INDICATOR --- */}
-        <div className="h-12 flex flex-col items-center justify-center relative w-full shrink-0">
+        <div className="h-8 sm:h-12 flex flex-col items-center justify-center relative w-full shrink-0">
            <ArrowDown className={`text-gray-600 transition-all duration-300 ${isProcessing ? 'translate-y-2 text-devil-500' : ''}`} size={24} />
            <div className="flex gap-1 mt-1 justify-center w-full px-8">
                 {/* Visualizing the "Queue" depth */}
@@ -210,8 +211,8 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
         </div>
 
         {/* --- BOTTOM SCREEN: ANSWER AREA --- */}
-        <div className="w-full flex-1 flex flex-col justify-start pt-2 relative">
-          <div className="text-center mb-2 h-6">
+        <div className="w-full flex-1 flex flex-col justify-start pt-1 sm:pt-2 relative">
+          <div className="text-center mb-1 sm:mb-2 h-5 sm:h-6">
              {phase !== 'memorize' && (
                <span className="text-xs uppercase tracking-widest text-blue-400 font-bold bg-blue-900/20 px-2 py-1 rounded">
                  回答阶段
@@ -224,7 +225,7 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
              ${phase === 'memorize' ? 'opacity-40 border-gray-600 grayscale bg-gray-300' : 'opacity-100'}
              ${feedback === 'correct' ? 'border-green-500 bg-green-50' : ''}
              ${feedback === 'wrong' ? 'border-red-500 bg-red-50' : 'border-gray-300'}
-             h-32
+             h-24 sm:h-32
           `}>
              {phase === 'memorize' && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/10 z-10">
@@ -232,11 +233,11 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
                 </div>
              )}
           
-             <div className="flex items-center gap-2 sm:gap-4 text-4xl sm:text-5xl font-mono font-bold text-gray-800 relative z-0">
+             <div className="flex items-center gap-1 sm:gap-2 md:gap-4 text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-gray-800 relative z-0">
                {revealedAnswer ? (
                   <>
-                    <span className="text-gray-500 text-3xl sm:text-4xl">{revealedAnswer.problem.expression}</span>
-                    <span className="text-gray-400">=</span>
+                    <span className="text-gray-500 text-2xl sm:text-3xl md:text-4xl">{revealedAnswer.problem.expression}</span>
+                    <span className="text-gray-400 text-2xl sm:text-3xl">=</span>
                     <span className={feedback === 'correct' ? 'text-green-600 scale-110' : 'text-red-600 scale-110'}>
                        {revealedAnswer.input}
                     </span>
@@ -244,10 +245,10 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
                ) : (
                   <>
                     <span className="text-gray-400">?</span>
-                    <span className="text-gray-400 text-3xl">+</span>
+                    <span className="text-gray-400 text-2xl sm:text-3xl">+</span>
                     <span className="text-gray-400">?</span>
-                    <span className="text-gray-400">=</span>
-                    <div className="w-14 h-14 border-b-4 border-gray-400 flex items-center justify-center bg-gray-200/50 rounded animate-pulse">
+                    <span className="text-gray-400 text-2xl sm:text-3xl">=</span>
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 border-b-4 border-gray-400 flex items-center justify-center bg-gray-200/50 rounded animate-pulse">
                     </div>
                   </>
                )}
@@ -270,19 +271,20 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
       </div>
 
       {/* --- INPUT AREA --- */}
-      <div className="bg-gray-800 p-3 pb-6 rounded-t-3xl shadow-[0_-4px_30px_rgba(0,0,0,0.5)] z-30 border-t border-gray-700 shrink-0">
+      <div className="bg-gray-800 p-2 pb-4 sm:p-3 sm:pb-6 rounded-t-3xl shadow-[0_-4px_30px_rgba(0,0,0,0.5)] z-30 border-t border-gray-700 shrink-0">
         {phase === 'memorize' ? (
            <button
              onClick={handleMemorizeNext}
              disabled={isProcessing}
-             className="w-full h-28 sm:h-36 bg-devil-600 hover:bg-devil-500 active:bg-devil-700 text-white rounded-xl shadow-[0_6px_0_rgb(127,29,29)] active:shadow-none active:translate-y-1.5 transition-all flex flex-col items-center justify-center gap-2 border-2 border-devil-400"
+             className="w-full h-20 sm:h-28 md:h-36 bg-devil-600 hover:bg-devil-500 active:bg-devil-700 text-white rounded-xl shadow-[0_4px_0_rgb(127,29,29)] sm:shadow-[0_6px_0_rgb(127,29,29)] active:shadow-none active:translate-y-1 sm:active:translate-y-1.5 transition-all flex flex-col items-center justify-center gap-1 sm:gap-2 border-2 border-devil-400"
            >
-             <span className="text-2xl font-black uppercase tracking-widest">记忆</span>
-             <span className="text-sm font-normal opacity-90 font-mono bg-black/20 px-3 py-1 rounded-full">点击隐藏</span>
+             <span className="text-xl sm:text-2xl font-black uppercase tracking-widest">记忆</span>
+             <span className="text-xs sm:text-sm font-normal opacity-90 font-mono bg-black/20 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">点击隐藏</span>
            </button>
         ) : (
            <Numpad onPress={handleInput} disabled={isProcessing} />
         )}
+      </div>
       </div>
     </div>
   );

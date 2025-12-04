@@ -61,10 +61,10 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-900 text-gray-100 font-sans bg-grid-pattern flex flex-col overflow-hidden">
-      
+    <div className="fixed inset-0 bg-neutral-900 text-gray-100 font-sans bg-grid-pattern overflow-hidden">
+
       {gameState === 'menu' && (
-        <div className="flex flex-col items-center justify-center min-h-screen p-6 max-w-md mx-auto w-full animate-fade-in">
+        <div className="flex flex-col items-center justify-center h-full p-4 sm:p-6 max-w-md mx-auto w-full animate-fade-in">
           <div className="mb-12 text-center relative">
             <div className="absolute inset-0 bg-devil-500 blur-[60px] opacity-20 rounded-full"></div>
             <div className="relative">
@@ -116,7 +116,7 @@ const App: React.FC = () => {
       )}
 
       {gameState === 'transition' && (
-        <div className="fixed inset-0 bg-devil-900/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center animate-fade-in p-6 text-center">
+        <div className="fixed inset-0 bg-devil-900/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center animate-fade-in p-4 sm:p-6 text-center">
             <ArrowUpCircle size={64} className="text-white mb-6 animate-bounce" />
             <h2 className="text-4xl font-black text-white italic mb-2">关卡通过！</h2>
             <p className="text-devil-200 text-lg mb-8">准确率达标。升级中...</p>

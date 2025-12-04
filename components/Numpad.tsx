@@ -16,10 +16,10 @@ const Button: React.FC<ButtonProps> = ({ num, onPress, disabled }) => (
     disabled={disabled}
     onClick={() => onPress(num)}
     className={`
-      flex-1 h-14 sm:h-20 text-2xl sm:text-3xl font-bold rounded-lg shadow-[0_4px_0_0_rgba(0,0,0,0.3)] 
-      transition-all active:translate-y-1 active:shadow-none border-b-4 border-r-2 border-l-2 border-t-0
-      ${disabled 
-        ? 'bg-gray-700 text-gray-500 cursor-not-allowed shadow-none translate-y-1 border-gray-800' 
+      flex-1 h-12 sm:h-14 md:h-20 text-xl sm:text-2xl md:text-3xl font-bold rounded-lg shadow-[0_3px_0_0_rgba(0,0,0,0.3)] sm:shadow-[0_4px_0_0_rgba(0,0,0,0.3)]
+      transition-all active:translate-y-0.5 sm:active:translate-y-1 active:shadow-none border-b-4 border-r-2 border-l-2 border-t-0
+      ${disabled
+        ? 'bg-gray-700 text-gray-500 cursor-not-allowed shadow-none translate-y-0.5 sm:translate-y-1 border-gray-800'
         : 'bg-gray-100 text-gray-900 border-gray-300 hover:bg-white active:bg-gray-300'}
     `}
   >
@@ -33,11 +33,11 @@ const Numpad: React.FC<NumpadProps> = ({ onPress, disabled }) => {
   const row2 = [6, 7, 8, 9, 0];
 
   return (
-    <div className="flex flex-col gap-2 w-full max-w-lg mx-auto">
-      <div className="flex gap-2 w-full">
+    <div className="flex flex-col gap-1.5 sm:gap-2 w-full max-w-lg mx-auto">
+      <div className="flex gap-1.5 sm:gap-2 w-full">
         {row1.map((num) => <Button key={num} num={num} onPress={onPress} disabled={disabled} />)}
       </div>
-      <div className="flex gap-2 w-full">
+      <div className="flex gap-1.5 sm:gap-2 w-full">
         {row2.map((num) => <Button key={num} num={num} onPress={onPress} disabled={disabled} />)}
       </div>
     </div>

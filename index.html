@@ -57,16 +57,37 @@
       }
     </script>
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body, #root {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+
       body {
         background-color: #111827; /* gray-900 */
         color: #f3f4f6;
-        overflow: hidden; /* Prevent scrolling during play */
         touch-action: manipulation; /* Improve touch response */
+        position: fixed;
+        inset: 0;
       }
+
       /* Custom pattern for 3DS vibe */
       .bg-grid-pattern {
         background-image: radial-gradient(#374151 1px, transparent 1px);
         background-size: 20px 20px;
+      }
+
+      /* Prevent iOS Safari address bar shifting */
+      @supports (-webkit-touch-callout: none) {
+        body {
+          min-height: -webkit-fill-available;
+        }
       }
     </style>
   <script type="importmap">
