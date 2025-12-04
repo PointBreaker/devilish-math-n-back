@@ -152,12 +152,12 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
       <div className="flex justify-between items-center p-4 bg-gray-900 border-b border-gray-800 z-10 h-16 shrink-0">
         <div className="flex items-center gap-2">
           <div className="bg-devil-600 text-white font-bold px-2 py-0.5 rounded text-sm">
-            Lv. {config.n}
+            第 {config.n} 关
           </div>
-          <span className="font-mono font-bold text-gray-200">{config.n}-Back</span>
+          <span className="font-mono font-bold text-gray-200">{config.n}步记忆</span>
         </div>
         <div className="flex items-center gap-2 font-mono text-sm font-bold text-gray-400">
-          <span>Left: <span className="text-white text-lg">{stepsLeft}</span></span>
+          <span>剩余: <span className="text-white text-lg">{stepsLeft}</span></span>
         </div>
       </div>
 
@@ -169,7 +169,7 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
           <div className="text-center mb-2 h-6">
              {phase === 'memorize' && (
                <span className="text-xs uppercase tracking-widest text-devil-400 font-bold bg-devil-900/30 px-2 py-1 rounded animate-pulse">
-                 Memorize
+                 记忆阶段
                </span>
              )}
           </div>
@@ -214,7 +214,7 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
           <div className="text-center mb-2 h-6">
              {phase !== 'memorize' && (
                <span className="text-xs uppercase tracking-widest text-blue-400 font-bold bg-blue-900/20 px-2 py-1 rounded">
-                 Answer
+                 回答阶段
                </span>
              )}
           </div>
@@ -272,13 +272,13 @@ const Game: React.FC<GameProps> = ({ config, onEnd }) => {
       {/* --- INPUT AREA --- */}
       <div className="bg-gray-800 p-3 pb-6 rounded-t-3xl shadow-[0_-4px_30px_rgba(0,0,0,0.5)] z-30 border-t border-gray-700 shrink-0">
         {phase === 'memorize' ? (
-           <button 
+           <button
              onClick={handleMemorizeNext}
              disabled={isProcessing}
              className="w-full h-28 sm:h-36 bg-devil-600 hover:bg-devil-500 active:bg-devil-700 text-white rounded-xl shadow-[0_6px_0_rgb(127,29,29)] active:shadow-none active:translate-y-1.5 transition-all flex flex-col items-center justify-center gap-2 border-2 border-devil-400"
            >
-             <span className="text-2xl font-black uppercase tracking-widest">Memorize</span>
-             <span className="text-sm font-normal opacity-90 font-mono bg-black/20 px-3 py-1 rounded-full">Tap to hide</span>
+             <span className="text-2xl font-black uppercase tracking-widest">记忆</span>
+             <span className="text-sm font-normal opacity-90 font-mono bg-black/20 px-3 py-1 rounded-full">点击隐藏</span>
            </button>
         ) : (
            <Numpad onPress={handleInput} disabled={isProcessing} />

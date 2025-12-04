@@ -12,7 +12,7 @@ interface ResultsProps {
 }
 
 const Results: React.FC<ResultsProps> = ({ session, onRetry, onHome }) => {
-  const [analysis, setAnalysis] = useState<string>("Analyzing neural patterns...");
+  const [analysis, setAnalysis] = useState<string>("正在分析神经模式...");
   
   // Calculate aggregate stats
   const overallAccuracy = session.totalProblems > 0 
@@ -40,8 +40,8 @@ const Results: React.FC<ResultsProps> = ({ session, onRetry, onHome }) => {
     <div className="flex flex-col h-full w-full max-w-md mx-auto p-6 animate-fade-in bg-gray-900 text-white overflow-y-auto">
       
       <div className="text-center mb-6">
-        <h2 className="text-4xl font-black text-white italic tracking-tighter mb-1">GAME OVER</h2>
-        <div className="text-devil-500 font-mono font-bold text-lg uppercase">Session Report</div>
+        <h2 className="text-4xl font-black text-white italic tracking-tighter mb-1">游戏结束</h2>
+        <div className="text-devil-500 font-mono font-bold text-lg uppercase">本次游戏报告</div>
       </div>
 
       {/* Main Score Card */}
@@ -50,20 +50,20 @@ const Results: React.FC<ResultsProps> = ({ session, onRetry, onHome }) => {
             <TrendingUp size={100} />
          </div>
          <div className="relative z-10">
-            <div className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Highest Level</div>
+            <div className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">最高关卡</div>
             <div className="text-6xl font-black text-white mb-4">
-              {session.maxLevel}<span className="text-2xl text-devil-500">-Back</span>
+              第 {session.maxLevel} 关<span className="text-2xl text-devil-500">步记忆</span>
             </div>
-            
+
             <div className="flex gap-8">
                <div>
-                  <div className="text-gray-500 text-xs uppercase">Total Accuracy</div>
+                  <div className="text-gray-500 text-xs uppercase">总体准确率</div>
                   <div className={`text-2xl font-bold ${overallAccuracy >= 65 ? 'text-green-400' : 'text-red-400'}`}>
                     {overallAccuracy}%
                   </div>
                </div>
                <div>
-                  <div className="text-gray-500 text-xs uppercase">Problems Solved</div>
+                  <div className="text-gray-500 text-xs uppercase">答对题数</div>
                   <div className="text-2xl font-bold text-blue-400">
                     {session.totalCorrect} <span className="text-sm text-gray-500">/ {session.totalProblems}</span>
                   </div>
@@ -75,7 +75,7 @@ const Results: React.FC<ResultsProps> = ({ session, onRetry, onHome }) => {
       {/* Progression Chart */}
       <div className="h-48 w-full mb-6 bg-gray-800/50 rounded-xl p-4 border border-gray-700/50">
         <div className="text-xs text-gray-400 mb-2 uppercase font-bold flex items-center gap-2">
-            <TrendingUp size={14} /> Level Progression (Accuracy %)
+            <TrendingUp size={14} /> 关卡进度（准确率 %）
         </div>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={chartData}>
@@ -100,7 +100,7 @@ const Results: React.FC<ResultsProps> = ({ session, onRetry, onHome }) => {
       <div className="bg-devil-950/80 border border-devil-800 p-5 rounded-xl mb-8 relative">
          <div className="flex items-center gap-2 text-devil-500 font-bold text-xs mb-2">
             <BrainCircuit size={14} />
-            DR. DEVIL'S EVALUATION
+            恶魔博士的评价
          </div>
          <p className="text-gray-200 italic text-sm leading-relaxed">
            "{analysis}"
@@ -109,19 +109,19 @@ const Results: React.FC<ResultsProps> = ({ session, onRetry, onHome }) => {
 
       {/* Actions */}
       <div className="flex gap-4 mt-auto">
-        <button 
+        <button
           onClick={onHome}
           className="flex-1 py-4 bg-gray-800 hover:bg-gray-700 rounded-xl font-bold text-gray-300 flex items-center justify-center gap-2 transition-colors"
         >
           <Home size={20} />
-          Menu
+          菜单
         </button>
-        <button 
+        <button
           onClick={onRetry}
           className="flex-1 py-4 bg-white hover:bg-gray-200 text-black rounded-xl font-black flex items-center justify-center gap-2 shadow-lg shadow-devil-900/20 transition-colors"
         >
           <RefreshCw size={20} />
-          RETRY
+          重试
         </button>
       </div>
     </div>

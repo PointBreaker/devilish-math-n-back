@@ -70,10 +70,10 @@ const App: React.FC = () => {
             <div className="relative">
               <Brain size={80} className="mx-auto text-devil-500 mb-6 drop-shadow-[0_0_15px_rgba(239,68,68,0.5)]" />
               <h1 className="text-5xl font-black tracking-tighter text-white mb-2 italic">
-                DEVIL<span className="text-devil-500">CALC</span>
+                恶魔<span className="text-devil-500">计算</span>
               </h1>
               <div className="text-gray-400 font-mono text-sm uppercase tracking-widest border-t border-gray-700 pt-2 inline-block">
-                Endless Challenge
+                无尽挑战
               </div>
             </div>
           </div>
@@ -83,19 +83,19 @@ const App: React.FC = () => {
                <div className="flex items-start gap-4">
                   <div className="bg-devil-900/50 p-2 rounded-lg text-devil-400 font-bold font-mono">01</div>
                   <p className="text-sm text-gray-300 leading-relaxed">
-                    Memorize the answers. They will be hidden.
+                    记住答案。它们将被隐藏。
                   </p>
                </div>
                <div className="flex items-start gap-4">
                   <div className="bg-devil-900/50 p-2 rounded-lg text-devil-400 font-bold font-mono">02</div>
                   <p className="text-sm text-gray-300 leading-relaxed">
-                    Input the answer from <span className="text-white font-bold">N steps ago</span>.
+                    输入 <span className="text-white font-bold">N 步之前</span>的答案。
                   </p>
                </div>
                <div className="flex items-start gap-4">
                   <div className="bg-devil-900/50 p-2 rounded-lg text-devil-400 font-bold font-mono">03</div>
                   <p className="text-sm text-gray-300 leading-relaxed">
-                    Achieve <span className="text-green-400 font-bold">{PASS_ACCURACY}%</span> accuracy to advance to the next level.
+                    达到 <span className="text-green-400 font-bold">{PASS_ACCURACY}%</span> 的准确率以进入下一关。
                   </p>
                </div>
             </div>
@@ -105,7 +105,7 @@ const App: React.FC = () => {
               className="w-full py-5 bg-white text-black rounded-2xl font-black text-xl flex items-center justify-center gap-3 hover:bg-devil-500 hover:text-white transition-all active:scale-95 shadow-[0_10px_20px_rgba(0,0,0,0.3)] mt-8"
             >
               <Play size={24} fill="currentColor" />
-              START TRAINING
+              开始训练
             </button>
           </div>
         </div>
@@ -118,13 +118,13 @@ const App: React.FC = () => {
       {gameState === 'transition' && (
         <div className="fixed inset-0 bg-devil-900/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center animate-fade-in p-6 text-center">
             <ArrowUpCircle size={64} className="text-white mb-6 animate-bounce" />
-            <h2 className="text-4xl font-black text-white italic mb-2">LEVEL CLEARED!</h2>
-            <p className="text-devil-200 text-lg mb-8">Accuracy sufficient. Promoting...</p>
-            
+            <h2 className="text-4xl font-black text-white italic mb-2">关卡通过！</h2>
+            <p className="text-devil-200 text-lg mb-8">准确率达标。升级中...</p>
+
             <div className="flex items-center gap-4 text-2xl font-mono font-bold">
-                <span className="opacity-50">{currentLevel}-Back</span>
+                <span className="opacity-50">{currentLevel}步记忆</span>
                 <span className="text-white">→</span>
-                <span className="text-green-400 scale-125 transform transition-transform">{currentLevel + 1}-Back</span>
+                <span className="text-green-400 scale-125 transform transition-transform">{currentLevel + 1}步记忆</span>
             </div>
         </div>
       )}
