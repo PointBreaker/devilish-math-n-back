@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Devilish Math N-Back</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              devil: {
+                50: '#fef2f2',
+                100: '#fee2e2',
+                200: '#fecaca',
+                300: '#fca5a5',
+                400: '#f87171',
+                500: '#ef4444',
+                600: '#dc2626',
+                700: '#b91c1c',
+                800: '#991b1b',
+                900: '#7f1d1d',
+                950: '#450a0a',
+              },
+              scientific: {
+                50: '#f0fdf4',
+                500: '#22c55e',
+                900: '#14532d',
+              }
+            },
+            fontFamily: {
+              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
+            },
+            animation: {
+              'slide-up': 'slideUp 0.3s ease-out',
+              'slide-in': 'slideIn 0.3s cubic-bezier(0.25, 1, 0.5, 1)', // Snappy slide
+              'fade-in': 'fadeIn 0.5s ease-out',
+            },
+            keyframes: {
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              slideIn: {
+                '0%': { transform: 'translateY(-100%)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #111827; /* gray-900 */
+        color: #f3f4f6;
+        overflow: hidden; /* Prevent scrolling during play */
+        touch-action: manipulation; /* Improve touch response */
+      }
+      /* Custom pattern for 3DS vibe */
+      .bg-grid-pattern {
+        background-image: radial-gradient(#374151 1px, transparent 1px);
+        background-size: 20px 20px;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

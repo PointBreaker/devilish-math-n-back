@@ -1,0 +1,5 @@
+{
+  "name": "Devilish Math N-Back",
+  "description": "A challenging N-Back arithmetic game inspired by classic brain training consoles. Test your working memory by solving math problems delayed by N steps.",
+  "requestFramePermissions": []
+}

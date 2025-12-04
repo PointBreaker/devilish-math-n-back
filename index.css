@@ -1,0 +1,13 @@
+/* Tailwind CSS - Your custom Tailwind styles */
+body {
+  background-color: #111827; /* gray-900 */
+  color: #f3f4f6;
+  overflow: hidden; /* Prevent scrolling during play */
+  touch-action: manipulation; /* Improve touch response */
+}
+
+/* Custom pattern for 3DS vibe */
+.bg-grid-pattern {
+  background-image: radial-gradient(#374151 1px, transparent 1px);
+  background-size: 20px 20px;
+}
